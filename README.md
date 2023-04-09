@@ -17,3 +17,6 @@ Then run:
 ```bash
 mvn clean test
 ```
+## CI Pipeline
+
+Every commit or pull request against main branch trigger a test runner which runs the tests on `windows-2019`
