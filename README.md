@@ -1,6 +1,8 @@
 # webstaurantstore-automation
 
 
+[![Selenium Test on Windows Server](https://github.com/saharpk1988/webstaurantstore-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/saharpk1988/webstaurantstore-automation/actions/workflows/ci.yml)
+
 ## Test Case
 
 * Go to https://www.webstaurantstore.com/
