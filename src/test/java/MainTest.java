@@ -12,9 +12,10 @@ import pages.HomePage;
 import pages.SearchResultsPage;
 import java.util.List;
 
+
 public class MainTest {
 
-    private WebDriver driver;
+    WebDriver driver;
 
     @BeforeAll
     static void setupAll() {
