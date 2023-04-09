@@ -1,4 +1,4 @@
-name: Selenium Test on Windows 10
+name: Selenium Test on Windows Server
 
 on:
   push:
