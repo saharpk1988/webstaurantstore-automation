@@ -40,7 +40,6 @@ public class SearchResultsPage {
         // Waiting for the 'Next Page' button to be visible and then clicking it
         WebElement nextPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#paging > nav > ul > li.inline-block.leading-4.align-top.rounded-r-md > a")));
         nextPage.click();
-        logger.log(Level.INFO, "Navigating to the next page of search results.");
     }
 
     // Method to close the notification popup after adding an item to cart
