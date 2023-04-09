@@ -19,11 +19,6 @@ jobs:
       with:
         java-version: '11'
 
-    - name: Setup Chrome browser
-      uses: actions/setup-chrome@v1
-      with:
-        chrome-version: 'latest'
-
     - name: Run tests
       run: |
         # Run your Selenium tests
