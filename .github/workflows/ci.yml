@@ -27,4 +27,4 @@ jobs:
     - name: Run tests
       run: |
         # Run your Selenium tests
-        mvn test -Dtest=MainTest
+        mvn clean test -Dtest=MainTest
