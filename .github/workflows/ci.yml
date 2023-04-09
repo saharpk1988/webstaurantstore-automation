@@ -20,10 +20,11 @@ jobs:
         java-version: '11'
 
     - name: Setup Chrome browser
-      uses: nanorepublica/win-chrome-action@master
+      uses: actions/setup-chrome@v1
+      with:
+        chrome-version: 'latest'
 
     - name: Run tests
       run: |
-      
         # Run your Selenium tests
         mvn test -Dtest=MainTest
