@@ -21,4 +21,4 @@ mvn clean test
 ```
 ## CI Pipeline
 
-Every commit or pull request against main branch trigger a test runner which runs the tests on `windows-2019`
+Every commit or pull request against main branch triggers a test pipeline on a `windows-2019` runner.
