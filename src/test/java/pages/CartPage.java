@@ -28,14 +28,15 @@ public class CartPage {
         // Wait for the cart button and click it
         WebElement cartButton = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("[data-testid='cart-nav-link']"))));
         cartButton.click();
+
         try{
             // Wait for the empty cart button and click it
             WebElement emptyCartButton = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='main']/div[1]/div/div[1]/div/button"))));
             emptyCartButton.click();
 
             // Wait for the empty cart confirmation dialog to appear and click the confirmation button
-            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@role='alertdialog']"))));
-            WebElement confirmEmptyCart = driver.findElement(By.xpath("//*[@id='td']/div[11]/div/div/div/footer/button[1]"));
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("empty-cart-title"))));
+            WebElement confirmEmptyCart = wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//*[@id='td']/div[10]/div/div/div/footer/button[1]"))));
             confirmEmptyCart.click();
 
             // Wait for the empty cart message to appear and assert that it contains the correct text
@@ -43,10 +44,9 @@ public class CartPage {
             String emptyCartMessage = emptyCartText.findElement(By.tagName("p")).getText();
             assertTrue(emptyCartMessage.contains("Your cart is empty."));
             logger.log(Level.INFO, "Cart emptied successfully");
-
         } catch (Exception exception){
-            // If there is no empty cart button, the cart is already empty
-            logger.log(Level.INFO, "The cart is already empty.");
+            // If there is no empty cart button, something went wrong
+            logger.log(Level.INFO, exception.getMessage());
         }
     }
 }
