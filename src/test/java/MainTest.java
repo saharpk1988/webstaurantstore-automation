@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,19 +11,22 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import pages.CartPage;
 import pages.HomePage;
 import pages.SearchResultsPage;
+import utils.CustomLogger;
+import utils.LoggerParameterResolver;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+@ExtendWith(LoggerParameterResolver.class)
 public class MainTest {
 
     private WebDriver driver;
     private final Logger logger;
 
 
-    public MainTest(){
-        this.logger = Logger.getLogger(MainTest.class.getName());
+    public MainTest(Logger logger){
+        this.logger = CustomLogger.getLogger();
     }
 
     @BeforeAll
@@ -37,7 +41,6 @@ public class MainTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-
     }
 
     @AfterEach
@@ -57,17 +60,19 @@ public class MainTest {
 
         //3) Check the search result ensuring every product has the word 'Table' in its title.
         int pageNumber = 1;
+        logger.log(Level.INFO, "Check the search results to ensure every product has the word 'Table' in its title.");
         while (searchResultsPage.isNextPagePresent()) {
             searchResultsPage.goToNextPage();
-            logger.log(Level.INFO, String.format("checking page %d", pageNumber));
+            logger.log(Level.INFO, String.format("Checking the search result on page %d", pageNumber));
             searchResultsPage.checkProductTitlesForWord("Table");
             pageNumber ++;
-            logger.log(Level.INFO, String.format("going to page %d", pageNumber));
+            logger.log(Level.INFO, String.format("Going to the search page %d", pageNumber));
         }
 
         //4) Add the last of found items to Cart.
 
         // Find the list of products
+        logger.log(Level.INFO, String.format("Add the last item of found items to the Cart."));
         List<WebElement> productList = searchResultsPage.getProductContainers();
         // Find the last product in the list
         WebElement lastProduct = productList.get(productList.size() - 1);

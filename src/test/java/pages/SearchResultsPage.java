@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.CustomLogger;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,7 +21,7 @@ public class SearchResultsPage {
     public SearchResultsPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofMinutes(1)); // Initializing WebDriverWait with a timeout of 1 minute
-        this.logger = Logger.getLogger(SearchResultsPage.class.getName()); // Initializing logger for the class
+        this.logger = CustomLogger.getLogger(); // Initializing logger for the class
     }
 
     public boolean isNextPagePresent() {
@@ -49,7 +51,7 @@ public class SearchResultsPage {
         closeNotificationButton.click();
         // Waiting for the 'Close' button to be invisible, i.e. for the notification popup to disappear
         wait.until(ExpectedConditions.invisibilityOf(closeNotificationButton));
-        logger.log(Level.INFO, "Closing the notification popup.");
+        // logger.log(Level.INFO, "Closing the notification popup.");
     }
 
     // Method to check if all product titles contain a given word

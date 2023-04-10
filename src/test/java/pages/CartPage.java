@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.CustomLogger;
+
 
 import java.time.Duration;
 import java.util.logging.Level;
@@ -13,14 +15,14 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CartPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
     private final Logger logger;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofMinutes(1)); // Wait up to 1 minute for elements to be found
-        this.logger = Logger.getLogger(CartPage.class.getName()); // Initializing logger for the class
+        this.logger = CustomLogger.getLogger(); // Initializing logger for the class
     }
 
     public void emptyCart() {
