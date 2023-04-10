@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    runs-on: macOS-latest
+    runs-on: windows-2019
 
     steps:
     - name: Checkout code
