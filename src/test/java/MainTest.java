@@ -41,6 +41,7 @@ public class MainTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
     }
 
     @AfterEach

@@ -33,12 +33,12 @@ public class CartPage {
 
         try{
             // Wait for the empty cart button and click it
-            WebElement emptyCartButton = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='main']/div[1]/div/div[1]/div/button"))));
+            WebElement emptyCartButton = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='main']/div[1]/div/div[1]/div/button"))));
             emptyCartButton.click();
 
             // Wait for the empty cart confirmation dialog to appear and click the confirmation button
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("empty-cart-title"))));
-            WebElement confirmEmptyCart = wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//*[@id='td']/div[10]/div/div/div/footer/button[1]"))));
+            WebElement confirmEmptyCart = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='td']/div[10]/div/div/div/footer/button[1]"))));
             confirmEmptyCart.click();
 
             // Wait for the empty cart message to appear and assert that it contains the correct text
