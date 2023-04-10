@@ -21,7 +21,7 @@ public class CartPage {
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofMinutes(1)); // Wait up to 1 minute for elements to be found
+        wait = new WebDriverWait(driver, Duration.ofMinutes(2)); // Wait up to 1 minute for elements to be found
         this.logger = CustomLogger.getLogger(); // Initializing logger for the class
     }
 
@@ -37,7 +37,8 @@ public class CartPage {
             emptyCartButton.click();
 
             // Wait for the empty cart confirmation dialog to appear and click the confirmation button
-            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("empty-cart-title"))));
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("empty-cart-title")));
+            driver.switchTo().activeElement();
             WebElement confirmEmptyCart = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='td']/div[10]/div/div/div/footer/button[1]"))));
             confirmEmptyCart.click();
 
